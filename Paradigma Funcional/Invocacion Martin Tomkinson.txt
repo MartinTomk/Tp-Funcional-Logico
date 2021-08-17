@@ -1,0 +1,49 @@
+
+Las variables que se usaron estan definidas dentro del archivo .hs fueron
+creadas para facilitar todas las pruebas  requeridas.
+Comente algunas lineas con "--" para diferenciarlas de las lineas escritas/devueltas
+en la  consola.
+
+Las patentes esperadas deben ser en MAYUSCULAS de lo contrario no funcionora correctamente!!
+---------------------------------
+
+*Main> esPeligroso autoLlantasOk
+False
+*Main> esPeligroso autoLlantasNotOk
+True
+*Main> verificarRevision autoRevision
+True
+*Main> verificarRevision autoNotRevision
+False
+*Main> calcularPreciopatente autoRpmHigh -- La patente es "AA555AA"
+12500
+*Main> calcularPreciopatente autoRpmLow -- La patente es "AAA222"
+15000
+*Main> calcularPreciopatente autoLlantasOk -- La patente es "DJB005" 
+20000
+*Main> calcularPreciopatente autoLlantasNotOk -- La patente es "DJB004"
+18000
+
+*Main> mecanicoAlfa autoRpmHigh -- Se observa en lo devuelto que seteo las revoluciones en 2000 (Poseia 2001)
+Auto {patente = "AA555AA", desgasteLlantas = [0.6,0.4,0.4,0.9], rpm = 2000, temperaturaAgua = 1481, ultimoArreglo = (24,12,2010)}
+
+*Main> mecanicoAlfa autoRpmLow -- Se observa en lo devuelto que no cambio las revoluciones
+Auto {patente = "AAA222", desgasteLlantas = [0.6,0.4,0.4,0.9], rpm = 1999, temperaturaAgua = 90, ultimoArreglo = (24,12,2010)}
+
+*Main> mecanicoBravo autoRpmLow -- Se observa que elimino el desgaste de todas las llantas poseia [0.6,0.4,0.4,0.9]
+Auto {patente = "AAA222", desgasteLlantas = [0.0,0.0,0.0,0.0], rpm = 1999, temperaturaAgua = 90, ultimoArreglo = (24,12,2010)}
+
+*Main> mecanicoCharly autoRpmLow -- Se observa que elimino el desgaste de todas las llantas poseia [0.6,0.4,0.4,0.9] y no modifico RPM
+Auto {patente = "AAA222", desgasteLlantas = [0.0,0.0,0.0,0.0], rpm = 1999, temperaturaAgua = 90, ultimoArreglo = (24,12,2010)}
+
+*Main> mecanicoCharly autoRpmHigh -- Se observa que elimino el desgaste de todas las llantas poseia [0.6,0.4,0.4,0.9] y modifico RPM a 2000
+Auto {patente = "AA555AA", desgasteLlantas = [0.0,0.0,0.0,0.0], rpm = 2000, temperaturaAgua = 1481, ultimoArreglo = (24,12,2010)}
+
+*Main> mecanicoLima autoRpmHigh -- Cambio las llantas delanteras eliminando el desgaste tenia [0.6,0.4,0.4,0.9]
+Auto {patente = "AA555AA", desgasteLlantas = [0.0,0.0,0.4,0.9], rpm = 2001, temperaturaAgua = 1481, ultimoArreglo = (24,12,2010)}
+
+*Main> mecanicoZulu autoRpmHigh -- Idem Lima y además modifico la temperatura a 90 tenia 1483 (El 1483 fue escrito a modo de prueba, la temperatura de un auto no puede llegar a tal nivel)
+Auto {patente = "AA555AA", desgasteLlantas = [0.0,0.0,0.4,0.9], rpm = 2001, temperaturaAgua = 90, ultimoArreglo = (24,12,2010)}
+
+*Main> mecanicoTango autoRpmLow -- No hace completamente nada solo dice que hizo muchas cosas
+Auto {patente = "AAA222", desgasteLlantas = [0.6,0.4,0.4,0.9], rpm = 1999, temperaturaAgua = 90, ultimoArreglo = (24,12,2010)}

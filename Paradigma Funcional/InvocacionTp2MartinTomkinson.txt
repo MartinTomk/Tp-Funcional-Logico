@@ -1,0 +1,44 @@
+*Main> verificarListaOrdenada autosOrdenados
+True
+
+*Main> verificarListaOrdenada autosNotOrdenados
+False
+
+*Main> verificarListaOrdenada autosInfinitos (Verficica hasta que encuentra uno que no esta en orden si estuviera ordenada no terminaria nunca)
+False
+
+*Main> ordenReparacion mecanicos fechaHoy autoRpmHigh
+Auto {patente = "AA555AA", desgasteLlantas = [0.0,0.0,0.0,0.0], rpm = 2000, temperaturaAgua = 90, ultimoArreglo = (27,5,2020)}
+
+*Main> autoEnCondiciones mecanicos autoLlantasNotOk
+4
+
+*Main> autoEnCondiciones mecanicos autoLlantasOk   
+6
+
+*Main> costoReparacion autosNotRevision
+0
+
+*Main> costoReparacion autosMixRevision
+90500
+
+*Main> costoReparacion autosPruebaRevision
+65500
+
+*Main> autoEnCondiciones tecnicosInfinitos autoRpmHigh
+NO TERMINA -----
+
+*Main> pruebaMecanicosInfinitos autoRpmHigh (La funciones es del tipo pruebaMecanicosInfinitos autoTaller = (autoEnCondicionesInfinita tecnicosInfinitos autoTaller) autoTaller)
+Auto {patente = "AA555AA", desgasteLlantas = [0.0,0.0,0.4,0.9], rpm = 2001, temperaturaAgua = 90, ultimoArreglo = (24,12,2010)}
+
+*Main> costoReparacion autosInfinitos
+NO TERMINA porque se queda filtrando una lista infinita
+
+*Main> costoReparacion' autosInfinitos 3 (El 3 corresponde a la cantidad que se quiere tomar de la lista infinita)
+45000
+
+*Main> costoReparacion' autosInfinitos 2
+30000
+
+*Main> costoReparacion' autosInfinitos 1
+15000

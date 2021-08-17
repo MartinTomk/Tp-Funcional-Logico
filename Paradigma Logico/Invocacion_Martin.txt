@@ -1,0 +1,110 @@
+
+Punto 3:
+
+sonLimitrofes(comarca,monteDelDestino).
+False
+
+sonLimitrofes(comarca,rivendel).
+true
+
+sonLimitrofes(rivendel,comarca).
+true
+
+sonLimitrofes(rivendel,moria).
+true
+
+sonLimitrofes(moria,rivendel).
+true
+
+sonLimitrofes(rivendel,ZonasLimitrofes).
+ZonasLimitrofes = comarca
+ZonasLimitrofes = moria
+
+
+
+Punto 4:
+
+regionLimitrofe(eriador,montanasNubladas).true
+
+
+regionLimitrofe(rohan,mordor).
+false
+
+regionLimitrofe(eriador,Region).Region = montanasNubladas
+
+regionLimitrofe(gondor,Region).
+Region = rohan
+Region = mordor
+
+
+regionLimitrofe(isengard,Region).
+false
+
+
+regionLimitrofe(mordor,_).
+true
+
+
+regionLejana(rohan,montanasNubladas).
+false
+
+regionLejana(eriador,mordor).true
+
+regionLejana(eriador,rohan).
+false
+
+
+regionLejana(mordor,Region).
+Region = eriador
+Region = eriador
+Region = montanasNubladas
+
+regionLejana(eriador,gondor).
+true
+
+------------------------------ Punto 5 -------------------------------------
+
+---Postivo/Negativo-----
+
+?- puedeSeguirCon([comarca, rivendel, moria, lothlorien, edoras, minasTirith, minasMorgul,monteDelDestino], mordor).          
+false.
+
+?- puedeSeguirCon([comarca, rivendel, moria, lothlorien, edoras, minasTirith, minasMorgul,monteDelDestino], minasMorgul). 
+true 
+
+----------Existenciales ZONA ----------
+?- puedeSeguirCon([comarca, rivendel, moria, lothlorien, edoras, minasTirith, minasMorgul,monteDelDestino], ZonasSiguientes).
+ZonasSiguientes = minasMorgul ;
+false.
+
+---Postivo/Negativo-----
+
+?- sonConsecutivos([comarca, rivendel, moria, lothlorien, edoras, minasTirith, minasMorgul,monteDelDestino], [minasMorgul]).
+true ;
+false.
+
+?- sonConsecutivos([comarca, rivendel, moria, lothlorien, edoras, minasTirith, minasMorgul,monteDelDestino], [comarca,minasMorgul]). 
+false.
+
+
+------------------------------ Punto 6 -------------------------------------
+
+---Postivo/Negativo-----
+
+?- caminoConLogica([comarca, rivendel, moria, lothlorien, edoras, minasTirith, minasMorgul,monteDelDestino]).
+true ;
+true ;
+false.
+
+?- caminoConLogica([comarca, rivendel, lothlorien, edoras, monteDelDestino]).                                
+false.
+
+---Postivo/Negativo-----
+
+?- caminoSeguro( [comarca, rivendel, moria, lothlorien, edoras, minasTirith, minasMorgul,monteDelDestino]). 
+true ;
+false.
+
+?- caminoSeguro([rivendel, lothlorien, edoras, isengard, abismoDeHelm, minasTirith, minasMorgul]).
+false.
+

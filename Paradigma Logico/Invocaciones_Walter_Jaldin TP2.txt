@@ -1,0 +1,295 @@
+1	Un camino que pasa por la Comarca, Rivendel y Moria atraviesa 2 regiones.	Sí
+
+1 ?- cantidadRegiones([comarca, rivendel, moria], 2).   
+true.
+
+2	Un camino que pasa por Minas Tirith y Minas Morgul, ¿cuántas regiones atraviesa?	2
+
+2 ?- cantidadRegiones([minasTirith, minasMorgul], Regiones). 
+Regiones = 2.
+
+3	Un camino que pasa por Moria, Isengard, Edoras, Minas Morgul, Minas Tirith atraviesa 2 regiones. 	No
+
+3 ?- cantidadRegiones([moria, isengard, edoras,minasMorgul,minasTirith], 2).        
+false.
+
+4	Un camino que pasa por Rivendel y la Comarca es vueltero	No
+
+4 ?- esVueltero([comarca,rivendel]). 
+false.
+
+5	Un camino que pasa por Rivendel, la Comarca y Rivendel es vueltero,	Sí
+
+5 ?- esVueltero([rivendel,comarca,rivendel]). 
+true.
+
+6	Un camino que pasa por Isengard, Moria, Lothrlorien, Edoras, Isengard es vueltero	Sí
+
+6 ?- esVueltero([isengard,moria,lothrlorien, edoras, isengard]).
+true.
+
+
+7	Todos estos caminos conducen a Mordor:
+-	Minas Tirith, Minas Morgul
+-	Minas Tirith, Minas Morgul, Monte del Destino
+-	Monte del Destino, Minas Morgul, Minas Tirith, Minas Morgul	Sí
+(Minas Morgul y Monte del Destino están en Mordor)
+
+7 ?- todosLosCaminosConducenAMordor([[minasTirith, minasMorgul],[minasTirith, minasMorgul,monteDelDestino],[monteDelDestino,minasMorgul,minasTirith,minasMorgul]]). 
+true.
+
+8	Todos estos caminos conducen a Mordor:
+-	Minas Tirith, Minas Morgul
+-	Minas Tirith, Minas Morgul, Monte del Destino
+-	Monte del Destino, Minas Morgul, Minas Tirith	No
+(Minas Morgul y Monte del Destino están en Mordor, pero Minas Tirith está en Gondor)
+
+8 ?- todosLosCaminosConducenAMordor([[minasTirith, minasMorgul],[minasTirith, minasMorgul],[comarca,rivendel]]).                                                    
+false
+
+Punto 3
+#	Descripción	Resultado esperado
+9	Gandalf es un maiar	Sí
+
+9 ?- raza(gandalf,maiar).
+true.
+
+10	Légolas es un elfo	Sí
+
+10 ?- raza(legolas,elfo).
+true.
+
+11	Górbag es un orco	Sí
+
+11 ?- raza(gorbag,orco).
+true.
+
+12	Úgluk es un uruk-hai	Sí
+
+12 ?- raza(ugluk, uruk-hai).
+true.
+
+13	Frodo es un hobbit	Sí
+
+13 ?-   raza(frodo,hobbit).
+true.
+
+14	Bárbol es un ent	Sí
+
+14 ?- raza(barbol,ent).     
+true.
+
+15	Comprobar la total inversibilidad del predicado que modela la relación entre viajero y su raza	N/A
+
+15 ?- raza(Nombre, Raza).
+Nombre = gandalf,
+Raza = maiar ;
+Nombre = legolas,
+Raza = elfo ;
+Nombre = gimli,
+Raza = enano ;
+Nombre = aragorn,
+Raza = dunedain ;
+Nombre = boromir,
+Raza = hombre ;
+Nombre = gorbag,
+Raza = orco ;
+Nombre = ugluk,
+Raza = uruk-hai ;
+Nombre = barbol,
+Raza = ent ;
+Nombre = frodo,
+Raza = hobbit ;
+Nombre = sam,
+Raza = hobbit.
+
+
+16	Gandalf tiene como arma un bastón	Sí
+
+16 ?- arma(gandalf,"baston"). 
+true.
+
+17	Bárbol tiene como arma su fuerza	Sí
+
+17 ?- arma(barbol,"fuerza"). 
+true.
+
+18	Frodo tiene como arma una espada corta	Sí
+
+18 ?- arma(frodo,"espadaCorta"). 
+true .
+
+19	Sam tiene como arma una daga	Sí
+
+19 ?- arma(sam,"daga").          
+true.
+
+20	Úgluk maneja una espada y un arco	Sí
+
+20 ?- arma(ugluk,espada).
+true .
+
+21	Comprobar la inversibilidad del predicado que modela la relación entre viajero y arma.	N/A
+
+19 ?- arma(Nombre,Arma).
+Nombre = gandalf,
+Arma = "baston" ;
+Nombre = legolas,
+Arma = arco ;
+Nombre = legolas,
+Arma = espada ;
+Nombre = gimli,
+Arma = hacha ;
+Nombre = aragorn,
+Arma = espada ;
+Nombre = boromir,
+Arma = espada ;
+Nombre = gorbag,
+Arma = ballesta ;
+Nombre = ugluk,
+Arma = espada ;
+Nombre = ugluk,
+Arma = arco ;
+Nombre = barbol,
+Arma = "fuerza" ;
+Nombre = frodo,
+Arma = "espadaCorta" ;
+Nombre = sam,
+Arma = "daga".
+
+22	El nivel de Gandalf es 25	Sí
+
+22 ?- nivel(gandalf,25).
+true.
+
+23	Saber el nivel de Górbag	24
+
+23 ?- nivel(gorbag, Nivel).
+Nivel = 24.
+
+24	El nivel de Légolas es 29	Sí
+
+24 ?- nivel(legolas,29).
+true.
+
+25	El nivel de Sam es 9	Sí
+
+25 ?- nivel(sam,9). 
+true.
+
+26	Saber el nivel de Bárbol	53
+
+26 ?- nivel(barbol,Nivel). 
+Nivel = 53.
+
+27	Saber quiénes tienen nivel 26	Gimli, Boromir, Úgluk
+
+27 ?- nivel(Quienes,26).
+Quienes = gimli ;
+Quienes = boromir ;
+Quienes = ugluk ;
+false.
+
+28	Existe alguien de nivel 22	No
+
+28 ?- nivel(Quienes,22). 
+false.
+
+29	Existe alguien de nivel 25	Sí
+
+29 ?- nivel(_,25).       
+true.
+
+
+Punto 4
+#	Descripción	Resultado esperado
+30	Un grupo formado por Frodo, Sam, Merry y Pippin es un grupo válido	No
+(Merry y Pippin no fueron modelados)
+
+30 ?- grupo([frodo,sam,merry,pippin]).
+false.
+
+31	Un grupo formado por Légolas y Gimli es un grupo válido	Sí
+
+31 ?- grupo([legolas,gimli]).          
+true .
+
+32	Un grupo formado por Gandalf, Aragorn y Frodo  cumplen el requerimiento elemento(armaduraMithril, 1) (de Moria)	Sí
+
+32 ?- cumpleRequerimiento([gandalf,aragorn,frodo],elemento(armaduraMithril,1)).
+true .
+
+33	Gandalf, Aragorn, Legolas y Gimli cumplen el requerimiento de magia(200) (del Abismo de Helm)	Sí
+
+33 ?- cumpleRequerimiento([gandalf,aragorn,legolas,gimli],magia(200)).
+true.
+
+34	Gandalf, Sam y Frodo cumplen requerimiento integrante(maiar, 27) (de Isengard)	No
+
+34 ?- cumpleRequerimiento([gandalf,sam,frodo], integrante(maiar, 27)).
+false.
+
+35	Un grupo formado por Frodo y Sam cumplen el requerimiento elemento(lembas, 2) (de Minas Morgul)	Sí
+
+35 ?- cumpleRequerimiento([sam,frodo], elemento(lembas, 2)).           
+true .
+
+36	Un grupo formado por Gandalf, Légolas y Aragorn cumplen el requerimiento integrante(maiar, 25) (de Moria)	Sí
+
+36 ?- cumpleRequerimiento([gandalf,legolas,aragorn],integrante(maiar, 25)).
+true.
+
+37	Un grupo formado por Gorbag y Úgluk cumplen el requerimiento integrante(maiar, 25) (de Moria)	No
+
+4 ?- cumpleRequerimiento([gorbag,urluk], integrante(maiar,25)). 
+false.
+
+Punto 5
+#	Descripción	Resultado esperado
+38	Un grupo formado por Gandalf, Aragorn y Frodo puede pasar por Moria	Sí
+
+2 ?- puedeAtravesar([gandalf,aragorn,frodo],moria).
+true ;
+false.
+
+39	Existen grupos que pueden pasar por el Abismo de Helm	Sí xxxx
+
+1 ?- puedeAtravesar(_,abismoDeHelm).           
+false.
+
+40	Existen grupos que pueden pasar por Isengard	No
+(no tenemos modelado un maiar de nivel suficiente)
+
+26 ?- puedeAtravesar(_,isengard).              
+false.
+
+41	Un grupo formado por Frodo y Sam puede pasar por Minas Morgul	Sí
+
+25 ?- puedeAtravesar([frodo,sam],minasMorgul).   
+true ;
+false.
+
+42	Comprobar la inversibilidad de puedeAtravesar/2 para la zona .	N/A
+
+22 ?- puedeAtravesar([frodo,sam],Region).      
+false.
+
+43	Un grupo formado por Frodo y Sam se siente como en casa en Eriador	Sí
+
+14 ?- seSientenComoEnCasa([frodo,sam],eriador). 
+true ;
+true ;
+false.
+
+44	Un grupo formado por Frodo y Sam se siente como en casa en Rohan	No
+
+seSientenComoEnCasa([frodo,sam],rohan).  
+false.
+
+45	Existen grupos de 2 viajeros que se sienten como en casa en Rohan	No
+
+12 ?- seSientenComoEnCasa(_,rohan). 
+false.
+
+46	Existen grupos de 2 viajeros que se sienten como en casa en Mordor	Sí
+(sólo tenemos modelados requerimientos para Minas Morgul) XX

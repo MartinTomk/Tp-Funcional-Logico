@@ -1,0 +1,189 @@
+1 ?- cantidadRegiones([comarca, rivendel, moria], 2).   
+true.
+
+2 ?- cantidadRegiones([minasTirith, minasMorgul], Regiones). 
+Regiones = 2.
+
+3 ?- cantidadRegiones([moria, isengard, edoras,minasMorgul,minasTirith], 2).        
+false.
+
+4 ?- esVueltero([comarca,rivendel]). 
+false.
+
+5 ?- esVueltero([rivendel,comarca,rivendel]). 
+true.
+
+6 ?- esVueltero([isengard,moria,lothrlorien, edoras, isengard]).
+true.
+
+7 ?- todosLosCaminosConducenAMordor([[minasTirith, minasMorgul],[minasTirith, minasMorgul,monteDelDestino],[monteDelDestino,minasMorgul,minasTirith,minasMorgul]]). 
+true.
+
+8 ?- todosLosCaminosConducenAMordor([[minasTirith, minasMorgul],[minasTirith, minasMorgul],[comarca,rivendel]]).                                                    
+false
+
+9 ?- raza(gandalf,maiar).
+true.
+
+10 ?- raza(legolas,elfo).
+true.
+
+11 ?- raza(gorbag,orco).
+true.
+
+12 ?- raza(ugluk, uruk-hai).
+true.
+
+13 ?-   raza(frodo,hobbit).
+true.
+
+14 ?- raza(barbol,ent).     
+true.
+
+15 ?- raza(Nombre, Raza).
+Nombre = gandalf,
+Raza = maiar ;
+Nombre = legolas,
+Raza = elfo ;
+Nombre = gimli,
+Raza = enano ;
+Nombre = aragorn,
+Raza = dunedain ;
+Nombre = boromir,
+Raza = hombre ;
+Nombre = gorbag,
+Raza = orco ;
+Nombre = ugluk,
+Raza = uruk-hai ;
+Nombre = barbol,
+Raza = ent ;
+Nombre = frodo,
+Raza = hobbit ;
+Nombre = sam,
+Raza = hobbit.
+
+16 ?- arma(gandalf,"baston"). 
+true.
+
+17 ?- arma(barbol,"fuerza"). 
+true.
+
+18 ?- arma(frodo,"espadaCorta"). 
+true .
+
+19 ?- arma(sam,"daga").          
+true.
+
+20 ?- arma(ugluk,espada).
+true .
+
+20 ?- arma(ugluk,arco).   
+true.
+
+21 ?- arma(Nombre,Arma).
+Nombre = gandalf,
+Arma = "baston" ;
+Nombre = legolas,
+Arma = arco ;
+Nombre = legolas,
+Arma = espada ;
+Nombre = gimli,
+Arma = hacha ;
+Nombre = aragorn,
+Arma = espada ;
+Nombre = boromir,
+Arma = espada ;
+Nombre = gorbag,
+Arma = ballesta ;
+Nombre = ugluk,
+Arma = espada ;
+Nombre = ugluk,
+Arma = arco ;
+Nombre = barbol,
+Arma = "fuerza" ;
+Nombre = frodo,
+Arma = "espadaCorta" ;
+Nombre = sam,
+Arma = "daga".
+
+22 ?- nivel(gandalf,25).
+true.
+
+23 ?- nivel(gorbag, Nivel).
+Nivel = 24.
+
+24 ?- nivel(legolas,29).
+true.
+
+25 ?- nivel(sam,9). 
+true.
+
+26 ?- nivel(barbol,Nivel). 
+Nivel = 53.
+
+27 ?- nivel(Quienes,26).
+Quienes = gimli ;
+Quienes = boromir ;
+Quienes = ugluk ;
+false.
+
+28 ?- nivel(Quienes,22). 
+false.
+
+29 ?- nivel(_,25).       
+true.
+
+30 ?- grupo([frodo,sam,merry,pippin]).
+false.
+
+31 ?- grupo([legolas,gimli]).          
+true .
+
+32 ?- cumpleRequerimiento([gandalf,aragorn,frodo],elemento(armaduraMithril,1)).
+true .
+
+33 ?- cumpleRequerimiento([gandalf,aragorn,legolas,gimli],magia(200)).
+true.
+
+34 ?- cumpleRequerimiento([gandalf,sam,frodo], integrante(maiar, 27)).
+false.
+
+35 ?- cumpleRequerimiento([sam,frodo], elemento(lembas, 2)).           
+true .
+
+36 ?- cumpleRequerimiento([gandalf,legolas,aragorn],integrante(maiar, 25)).
+true.
+
+37 ?- cumpleRequerimiento([gorbag,urluk], integrante(maiar,25)). 
+false.
+
+Punto 5
+
+38 ?- puedeAtravesar([gandalf,aragorn,frodo],moria).
+true ;
+false.
+
+39?- XX
+
+40 ?- puedeAtravesar(_,abismoDeHelm).           
+false.
+o tenemos modelado un maiar de nivel suficiente)
+
+41 ?- puedeAtravesar(_,isengard).              
+false.
+
+42 ?- puedeAtravesar([frodo,sam],minasMorgul).   
+true ;
+false.
+
+43 ?- puedeAtravesar([frodo,sam],Region).      
+false.
+
+44 ?- seSientenComoEnCasa([frodo,sam],eriador). 
+true ;
+true ;
+false.
+
+45 ?- seSientenComoEnCasa([frodo,sam],rohan).  
+false.
+

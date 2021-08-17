@@ -1,0 +1,68 @@
+--Invocaciones Walter Jaldin
+
+--Variables (Segunda Parte)
+
+autoPat7DigRev = Auto "WJ202MT" [0.3,0.4,0.1,0.9] 3500 1481 (18,05,2020)
+autoPat6DigNotRev = Auto "TJS345" [0.6,0.2,0.2,0.4] 1800 90 (28,03,2009)
+
+orderedCars :: [Auto]
+orderedCars = [autoPat7DigRev,autoPat6DigNotRev,autoPat7DigRev,autoPat6DigNotRev,autoPat7DigRev] --Mix de autos
+
+notOrderedCars :: [Auto]
+notOrderedCars = [autoPat7DigRev,autoPat7DigRev,autoPat7DigRev,autoPat7DigRev,autoPat7DigRev] --No necesita revision
+
+sameCars :: [Auto]
+sameCars = [autoPat6DigNotRev,autoPat6DigNotRev,autoPat6DigNotRev,autoPat6DigNotRev,autoPat6DigNotRev] --Todos Necesitan Revision
+
+--Punto 4:
+
+*Main> verificarListaOrdenada orderedCars   
+True
+*Main> verificarListaOrdenada notOrderedCars
+False
+*Main> verificarListaOrdenada autosInfinitos
+False
+
+--Punto 5:
+
+*Main> ordenReparacion mecanicos fechaHoy autoPat7DigRev
+Auto {patente = "WJ202MT", desgasteLlantas = [0.0,0.0,0.0,0.0], rpm = 2000, temperaturaAgua = 90, ultimoArreglo = (27,5,2020)}
+
+--Punto 6:
+
+--Parte 1
+*Main> autoEnCondiciones mecanicos autoPat6DigNotRev 
+4
+*Main> autoEnCondiciones mecanicos autoPat7DigRev    
+6
+
+--Parte 2
+*Main> costoReparacion orderedCars 
+30000
+*Main> costoReparacion notOrderedCars            
+0
+*Main> costoReparacion sameCars 
+75000
+
+--Punto 7:
+
+--Parte 1
+*Main> autoEnCondiciones tecnicosInfinitos autoPat6DigNotRev  --Never Ends       
+| -- Ctrl C
+Interrupted.
+
+*Main> pruebaMecanicosInfinitos autoPat6DigNotRev                    
+Auto {patente = "TJS345", desgasteLlantas = [0.0,0.0,0.2,0.4], rpm = 1800, temperaturaAgua = 90, ultimoArreglo = (28,3,2009)}
+
+--Parte 2
+*Main> costoReparacion autosInfinitos  --Never Ends
+| -- Ctrl C
+Interrupted.
+
+*Main> costoReparacion' autosInfinitos 9
+135000
+*Main> costoReparacion' autosInfinitos 5
+75000
+*Main> costoReparacion' autosInfinitos 52
+780000
+

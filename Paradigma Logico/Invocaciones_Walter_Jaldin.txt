@@ -1,0 +1,129 @@
+Punto 3:
+
+1	¨La Comarca y el Monte del Destino son zonas lim¡trofes?	No
+sonLimitrofes(comarca,monteDelDestino).
+False
+
+2	¨La Comarca y Rivendel son zonas lim¡trofes?	S¡
+sonLimitrofes(comarca,rivendel).
+true
+
+3	¨Rivendel y La Comarca son zonas lim¡trofes?	S¡
+sonLimitrofes(rivendel,comarca).
+true
+
+4	¨Rivendel y Moria son zonas lim¡trofes?	S¡
+sonLimitrofes(rivendel,moria).?true
+
+5	¨Moria y Rivendel son zonas lim¡trofes?	S¡
+sonLimitrofes(moria,rivendel).?true
+
+6	¨Qu‚ zonas son lim¡trofes con Rivendel?	La Comarca y Moria
+sonLimitrofes(rivendel,ZonasLimitrofes).
+ZonasLimitrofesÿ=ÿcomarca
+ZonasLimitrofesÿ=ÿmoria
+
+
+
+Punto 4:
+
+7	¨Eriador y las Monta¤as Nubladas son regiones lim¡trofes?	S¡
+regionLimitrofe(eriador,montanasNubladas).?true
+
+8	¨Rohan y Mordor son regiones lim¡trofes?	No
+regionLimitrofe(rohan,mordor).
+false
+
+9	¨Cu les son las regiones lim¡trofes de Eriador?	S¢lo las Monta¤as Nubladas
+regionLimitrofe(eriador,Region).?Regionÿ=ÿmontanasNubladas
+
+10	¨Cu les son las regiones lim¡trofes de Gondor?	Rohan y Mordor
+regionLimitrofe(gondor,Region).
+Regionÿ=ÿrohan
+Regionÿ=ÿmordor
+
+11	¨Isengard tiene regiones lim¡trofes?	No (­no es una regi¢n, sino una zona!)
+regionLimitrofe(isengard,Region).
+false
+
+12	¨Mordor tiene regiones lim¡trofes?	S¡
+regionLimitrofe(mordor,_).
+true
+
+13	¨Rohan y las Monta¤as Nubladas son lejanas?	No (son lim¡trofes)
+regionLejana(rohan,montanasNubladas).
+false
+
+14	¨Eriador y Mordor son lejanas?	S¡
+regionLejana(eriador,mordor).?true
+
+15	¨Eriador y Rohan son lejanas?	No (ambas son lim¡trofes de las Monta¤as Nubladas)
+regionLejana(eriador,rohan).
+false
+
+16	¨Qu‚ regi¢n es lejana de Mordor?	Eriador y las Monta¤as Nubladas
+regionLejana(mordor,Region).?
+Regionÿ=ÿeriador
+Regionÿ=ÿeriador
+Regionÿ=ÿmontanasNubladas
+
+17	¨Es cierto que Eriador es una regi¢n lejana para Gondor?	S¡
+regionLejana(eriador,gondor).
+true
+
+Punto 5
+
+18	Mostrar que puedeSeguirCon/2 funciona para consultas individuales (por positivo y por negativo).
+
+---Negativo-----
+
+puedeSeguirCon([comarca, rivendel, moria, lothlorien, edoras, minasTirith, minasMorgul,monteDelDestino], mordor).          
+false.
+
+---Positvo -----
+
+puedeSeguirCon([comarca, rivendel, moria, lothlorien, edoras, minasTirith, minasMorgul,monteDelDestino], minasMorgul). 
+True
+
+19	Mostrar que puedeSeguirCon/2 funciona para consultas existenciales (para la zona).
+
+puedeSeguirCon([comarca, rivendel, moria, lothlorien, edoras, minasTirith, minasMorgul,monteDelDestino], ZonasSiguientes).
+ZonasSiguientes = minasMorgul ;
+false.
+
+20	Mostrar que sonConsecutivos/2 funciona para consultas individuales (por positivo y por negativo).
+
+---Positivo-----
+
+?- sonConsecutivos([comarca, rivendel, moria, lothlorien, edoras, minasTirith, minasMorgul,monteDelDestino], [minasMorgul]).
+true.
+
+---Negativo-----
+
+?- sonConsecutivos([comarca, rivendel, moria, lothlorien, edoras, minasTirith, minasMorgul,monteDelDestino], [comarca,minasMorgul]). 
+false.
+
+Punto 6
+
+21	Mostrar que el camino dado en el enunciado tiene l¢gica
+
+---Positivo -----
+caminoConLogica([comarca, rivendel, moria, lothlorien, edoras, minasTirith, minasMorgul,monteDelDestino]).
+true.
+
+22	Mostrar que el siguiente camino no tiene l¢gica (tiene zonas consecutivas que no son lim¡trofes):
+Comarca, Rivendel, Lothl¢rien, Edoras, Monte del Destino
+
+---Negativo-----
+caminoConLogica([comarca, rivendel, lothlorien, edoras, monteDelDestino]).                                
+false.
+
+23	Mostrar que el camino dado en el enunciado es seguro.
+
+---Positivo -----
+caminoSeguro( [comarca, rivendel, moria, lothlorien, edoras, minasTirith, minasMorgul,monteDelDestino]). 
+true.
+
+---Negativo-----
+caminoSeguro([rivendel, lothlorien, edoras, isengard, abismoDeHelm, minasTirith, minasMorgul]).
+false.

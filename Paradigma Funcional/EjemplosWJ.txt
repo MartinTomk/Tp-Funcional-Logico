@@ -1,0 +1,79 @@
+--Variables Walter Jaldin
+
+autoPat7DigRev = Auto "WJ202MT" [0.6,0.4,0.4,0.9] 3500 1481 (18,05,2020)
+autoPat6DigNotRev = Auto "TJS345" [0.6,0.4,0.4,0.9] 1800 90 (28,03,2009)
+
+autoPatNot4NotDanger = Auto "NAZ007" [0.2,0.4,0.4,0.9] 1950 90 (24,12,2010)
+autoPat4Danger = Auto "NAZ004" [0.8,0.3,0.5,0.9] 2000 90 (24,12,2010)
+
+--Punto 1:
+
+*Main> calcularPrecioPatente autoPat7DigRev
+12500
+*Main> calcularPrecioPatente autoPat6DigNotRev
+15000
+*Main> calcularPrecioPatente autoPatNot4NotDanger
+20000
+*Main> calcularPrecioPatente autoPat4Danger
+18000
+
+--Punto 2:
+
+--Parte 1) Auto peligroso (Martin Tomkinson - MartinTomk)
+
+*Main> esPeligroso autoPat4Danger
+True
+*Main> esPeligroso autoPatNot4NotDanger
+False
+
+--Parte 2) Necesita revisión (Walter Jaldin - Wallej)
+
+*Main> verificarRevision autoPat7DigRev
+True
+*Main> verificarRevision autoPat6DigNotRev
+False
+
+--Punto 3: Personal técnico encargado de las reparaciones
+
+--Parte 1) Martin Tomkinson - MartinTomk
+
+--Mecanico Alfa:
+
+*Main> mecanicoAlfa autoPat7DigRev
+Auto {patente = "WJ202MT", desgasteLlantas = [0.6,0.4,0.4,0.9], rpm = 2000, temperaturaAgua = 1481, ultimoArreglo = (18,5,2009)}
+
+*Main> mecanicoAlfa autoPat6DigNotRev
+Auto {patente = "TJS345", desgasteLlantas = [0.6,0.4,0.4,0.9], rpm = 1800, temperaturaAgua = 90, ultimoArreglo = (28,3,2020)}
+
+--Mecanico Bravo:
+
+*Main> mecanicoBravo autoPat6DigNotRev
+Auto {patente = "TJS345", desgasteLlantas = [0.0,0.0,0.0,0.0], rpm = 1800, temperaturaAgua = 90, ultimoArreglo = (28,3,2020)}
+
+--Mecanico Charly:
+
+*Main> mecanicoCharly autoPat7DigRev
+Auto {patente = "WJ202MT", desgasteLlantas = [0.0,0.0,0.0,0.0], rpm = 2000, temperaturaAgua = 1481, ultimoArreglo = (18,5,2009)}
+
+mecanicoCharly autoPat6DigNotRev
+Auto {patente = "TJS345", desgasteLlantas = [0.0,0.0,0.0,0.0], rpm = 1800, temperaturaAgua = 90, ultimoArreglo = (28,3,2020)}
+
+--Parte 2) Walter Jaldin - Wallej
+
+--Mecanico Tango:
+
+mecanicoTango autoPat7DigRev
+Auto {patente = "WJ202MT", desgasteLlantas = [0.6,0.4,0.4,0.9], rpm = 3500, temperaturaAgua = 1481, ultimoArreglo = (18,5,2009)}
+
+--Mecanico Zulu:
+
+mecanicoZulu autoPat7DigRev
+Auto {patente = "WJ202MT", desgasteLlantas = [0.0,0.0,0.4,0.9], rpm = 3500, temperaturaAgua = 90, ultimoArreglo = (18,5,2009)}
+
+--Mecanico Lima:
+
+mecanicoLima autoPat7DigRev
+Auto {patente = "WJ202MT", desgasteLlantas = [0.0,0.0,0.4,0.9], rpm = 3500, temperaturaAgua = 1481, ultimoArreglo = (18,5,2009)}
+
+
+
